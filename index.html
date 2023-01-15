@@ -22,7 +22,7 @@
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img class="logonav" src="./img/logo-circulo.png" alt=""></a>
+      <a id="logo" class="navbar-brand" href="#"><img class="logonav" src="./img/logo-circulo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -42,6 +42,13 @@
               <button id="botonBuscador" class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
+      </div>
+      <div id="icono-carro" class="form-inline my-2 my-lg-0">
+        <a id="cart-button">
+          <img id="carritoIcono" src="images/cart.png">
+        </a>
+        <!-- render items en cart -->
+        <div id="carritoNav"></div>
       </div>
     </div>
   </nav>
