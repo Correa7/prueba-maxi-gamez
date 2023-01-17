@@ -93,7 +93,7 @@ function miPagina (productos)  {
     
             tarjetaProducto.innerHTML = `
             <div class="card" style="width: 15rem;">
-                <img src="${producto.imgUrl}" class="card-img-top" alt="...">
+                <img src="${producto.imgUrl}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">${producto.nombre}</h5>
                         <p class="card-text">Peso neto${producto.peso} gr.</p>
@@ -130,7 +130,7 @@ function miPagina (productos)  {
             carrito.push({
                 id: productoBuscado.id, nombre: productoBuscado.nombre,
                 precioUnitario: productoBuscado.precio, unidades: 1, subtotal: productoBuscado.
-                    precio })
+                    precio, imgUrl : productoBuscado.imgUrl })
                 carritoJSON = JSON.stringify(carrito)
                 localStorage.setItem("Carrito", carritoJSON)
         }
@@ -148,32 +148,35 @@ function miPagina (productos)  {
         contenedorCarrito.innerHTML = ""
         for (const producto of arrayDeProductos) {
             contenedorCarrito.innerHTML += `
-            <div class="contenedor-carrito">
-                <div class="flex">
-                    <p>${producto.nombre}</p>
-                    <p>$${producto.precioUnitario}</p>
-                    <p>${producto.unidades}u.</p>
-                    <p>${producto.subtotal}</p>
-                </div>
-                <div class="boton-carrito">
-                    <div class="img-carrito">
-                    <img id="${producto.id}" class="chg-quantity update-cart " src="img/ap.png">
+         
+                <div class="table">
+                    <div style="flex:1"><img class="carrito-img" src="${producto.imgUrl}"></div>
+                    <div style="flex:2"><p>${producto.nombre}</p></div>
+                    <div style="flex:1"><p>$${producto.precioUnitario}</p></div>
+                    <div style="flex:1"><p>${producto.unidades}u.</p></div>
+                    <div style="flex:1"><p>$${producto.subtotal}</p></div>
+                    <div style="flex:1">
+                        <div class="boton-carrito">
+                            <div class="img-carrito">
+                            <img id="${producto.id}" class="chg-quantity update-cart " src="img/ap.png">
+                            </div>
+                            <div class="img-carrito">
+                            <img id="${producto.id}" class="chg-quantity-2 update-cart" src="img/down.png">
+                            </div>
+                            <div class="img-carrito">
+                            <img id="${producto.id}" class="chg-quantity-3 update-cart" src="img/trash.png">
+                            </div>
+                        </div>
                     </div>
-                    <div class="img-carrito">
-                    <img id="${producto.id}" class="chg-quantity-2 update-cart" src="img/down.png">
-                    </div>
-                    <div class="img-carrito">
-                    <img id="${producto.id}" class="chg-quantity-3 update-cart" src="img/trash.png">
-                    </div>
-                </div>
-            </div>
+                </div><hr>
+          
         
             `
         }
      
         let total = carrito.reduce((acc, valorActual) => acc + valorActual.subtotal, 0)
         contenedorCarrito.innerHTML += `
-        <h3> Total $${total}</h3>
+        <br><h3> Total $${total}</h3><br>
         `
         let add = document.getElementsByClassName("chg-quantity update-cart")
         for (let a of add) {
